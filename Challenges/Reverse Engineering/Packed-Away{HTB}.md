@@ -1,2 +1,2 @@
 ## HTB - Packed Away (Very Easy)
-Follow along: [rev_packedaway.zip](https://github.com/hackthebox/cyber-apocalypse-2024/blob/main/reversing/%5BVery%20Easy%5D%20PackedAway/release/rev_packedaway.zip)
+Follow along: [rev_packedaway.zip](Blue-Team/blob/main/Challenges/Reverse%20Engineering/Files/rev_packedaway.zip)
