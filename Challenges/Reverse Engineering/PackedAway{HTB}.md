@@ -1,4 +1,4 @@
-## 📦 Packed Away (Very Easy) - HTB
+## 📦 PackedAway (Very Easy) - HTB
 Follow along: [rev_packedaway.zip](https://github.com/moromerx/BlueTeam/blob/main/Challenges/Reverse%20Engineering/Files/rev_packedaway.zip)
 
 Unzip the file.
