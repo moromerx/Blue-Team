@@ -1,4 +1,4 @@
-## 💰 LootStash - HTB (Very Easy)
+## 💰 Loot Stash - HTB (Very Easy)
 
 Follow along: [rev_lootstash.zip](https://github.com/moromerx/Blue-Team/blob/main/Challenges/Reverse%20Engineering/Files/rev_lootstash.zip)
 
