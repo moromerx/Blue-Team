@@ -1,1 +1,1 @@
-# Blue Team
+# CTF-Challenges
