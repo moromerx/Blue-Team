@@ -40,7 +40,9 @@ The main function:
 
 We still don't really get what the program is doing; let's check the 'add_char_to_map' function (double-click on it).
 
-![image](https://github.com/moromerx/CTF-Challenges/assets/162036545/8eb8580e-4bd7-4211-bd3f-ddeb2462f46d)
+`Note: I changed the name of the first two variables to array and input`
+
+![image](https://github.com/moromerx/CTF-Challenges/assets/162036545/ecc3e192-85ea-4550-a1f2-3fbd083eeac3)
 
 The add_char_to_map function is doing the following:
 
@@ -48,7 +50,7 @@ The add_char_to_map function is doing the following:
 
 1.  It defines a pointer puVar1 and a long integer local_10.
 
-2.  local_10 = *(long *)(array + (ulong)check * 8); - This line of code first takes the character input (converts it to an unsigned long int) and multiplies it by 8 to find the correct byte offset in the array. This is because each element in the array is 8 bytes long. By multiplying the character code by 8, we are calculating the starting address of the slot in the array that is reserved for this particular character. Then, the code dereferences the calculated address to retrieve the value stored at that location in the array, and assigns this value to the variable local_10.
+2.  local_10 = *(long *)(array + (ulong)input * 8); - This line of code first takes the character input (converts it to an unsigned long int) and multiplies it by 8 to find the correct byte offset in the array. This is because each element in the array is 8 bytes long. By multiplying the character code by 8, we are calculating the starting address of the slot in the array that is reserved for this particular character. Then, the code dereferences the calculated address to retrieve the value stored at that location in the array, and assigns this value to the variable local_10.
 
 3.  puVar1 = (undefined8 *)malloc(0x10); - It then allocates 16 bytes (0x10 in hexadecimal) of memory and assigns the address of this memory to puVar1. This is because the first 8 bytes will be used to store information and the next 8 bytes will store the address of the next node. (Linked list Concept)
 
@@ -56,9 +58,9 @@ The add_char_to_map function is doing the following:
 
 5.  puVar1[1] = 0; - This sets the second element, which will be the address of the next node, to zero.
 
-6.  if (local_10 == { *(undefined8 **)((ulong)check * 8 + array) = puVar1 } - This checks if the value at the location of where the character is stored (or supposed to be stored) is 0 or not. If it is, it means this character has not been entered before, and it creates a node for it. It stores the pointer puVar1 in the array, at the index for the character (where the character is supposed to be stored in the array).
+6.  if (local_10 == 0) { *(undefined8 **)((ulong)input * 8 + array) = puVar1 } - This checks if the value at local_10 is 0 or not. If it is, it means this character has not been entered before, and it creates a node for it. It stores the pointer puVar1 in the array, at the index for the character (where the character is supposed to be stored in the array).
 
-7.    else { for ( ; *(long *)(local_10 + 8) != 0; local_10 = *(long *)(local_10 + 8)) {}    *(undefined8 **)(local_10 + 8) = puVar1; } - If the local_10 variable is not equal to zero, this means this character has been entered before, and so it goes through the linked list till it reaches the last node and adds the character there (again, the linked list concept).
+7.    else { for ( ; *(long *)(local_10 + 8) ... *(undefined8 **)(local_10 + 8) = puVar1; } - If the local_10 variable is not equal to zero, this means this character has been entered before, and so it goes through the linked list till it reaches the last node and adds the character there (again, the linked list concept).
 
 So the 'add_char_to_map' function uses a linked list to track occurrences of characters in a dataset. It calculates the position for a character in an array, checks if a linked list already exists there, and either creates a new list or appends to the existing one. 
 
