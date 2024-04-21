@@ -1,5 +1,7 @@
 ## 🔨 Crushing (Easy) - HTB
 
+Follow along: [rev_crushing.zip](https://github.com/hackthebox/cyber-apocalypse-2024/raw/main/reversing/%5BEasy%5D%20Crushing/release/rev_crushing.zip)
+
 Unzip the file.
 
 ![image](https://github.com/moromerx/CTF-Challenges/assets/162036545/716bfb50-d34f-4fe3-a6fe-3d5412d28876)
