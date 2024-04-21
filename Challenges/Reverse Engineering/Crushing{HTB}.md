@@ -44,7 +44,7 @@ We still don't really get what the program is doing; let's check the 'add_char_t
 
 The add_char_to_map function is doing the following:
 
-`Note: The concept of Linked List is used here`
+`Note: The concept of linked list is used here`
 
 1.  It defines a pointer puVar1 and a long integer local_10.
 
@@ -58,15 +58,15 @@ The add_char_to_map function is doing the following:
 
 6.  if (local_10 == { *(undefined8 **)((ulong)check * 8 + array) = puVar1 } - This checks if the value at the location of where the character is stored (or supposed to be stored) is 0 or not. If it is, it means this character has not been entered before, and it creates a node for it. It stores the pointer puVar1 in the array, at the index for the character (where the character is supposed to be stored in the array).
 
-7.    else { for ( ; *(long *)(local_10 + 8) != 0; local_10 = *(long *)(local_10 + 8)) {}    *(undefined8 **)(local_10 + 8) = puVar1; } - If the local_10 variable is not equal to zero, this means this character has been entered before and so it goes through the linked list till it reaches the last node and adds the character there (again, the linked list concept).
+7.    else { for ( ; *(long *)(local_10 + 8) != 0; local_10 = *(long *)(local_10 + 8)) {}    *(undefined8 **)(local_10 + 8) = puVar1; } - If the local_10 variable is not equal to zero, this means this character has been entered before, and so it goes through the linked list till it reaches the last node and adds the character there (again, the linked list concept).
 
-So this function is basically storing the number of times characters were entered and at what point did the user enter them.
+So the 'add_char_to_map' function uses a linked list to track occurrences of characters in a dataset. It calculates the position for a character in an array, checks if a linked list already exists there, and either creates a new list or appends to the existing one. 
 
 The final function we need to understand is the 'searilize and output' function:
 
 ![image](https://github.com/moromerx/CTF-Challenges/assets/162036545/adcc507c-763d-423a-9836-986f4cadb113)
 
-1.  It starts by declaring some variables which will be used within the function.
+1.  It starts by declaring some variables that will be used within the function.
 
 2.  for (local_c = 0; local_c < 0xff; local_c = local_c + 1) - This for-loop will go through all the characters from 0-255 as the array (we passed it as an argument) has 256 elements and it loops till 255 (0xff). The numbers 0-255 can be mapped to characters on the ASCII table.
 
@@ -78,13 +78,13 @@ The final function we need to understand is the 'searilize and output' function:
 
 6.  for (local_18 = *local_20; local_18 != (void *)0x0; local_18 = *(void **)((long)local_18 + 8)) { fwrite(local_18,8,1,stdout); } - The inner for-loop iterates through each node in the linked list. It stops when it encounters a pointer that is NULL (0x0), which signifies the end of the list. It writes the data pointed to by local_18 to the standard output.
 
-Now we have a good understanding of what the program does. It takes input from the user and stores information of every occurence of the entered character. It then searlizes it by outputting the number of occurences of a character followed by the position of every occurence. For example: It takes the character 'A' and records every time the user enters it. Let's say the user enters it 2 times, at positions 20,25. So our output would be 2 followed by 20 and 25. The actual output would be binary data because fwrite writes raw bytes to stdout.
+Now we have a good understanding of what the program does. It reads input character-by-character until EOF and uses a function add_char_to_map to build a data structure that maps each byte to a linked list of positions where that byte appears in the input. It tracks the frequency and position of each byte encountered. Finally, the program serializes this mapping into a structured format using serialize_and_output, where it outputs the length of each list followed by the position data for each byte, and writes this serialized data to a file.
 
-We can use "hexdump message.Looking at the text file provided to us, it's likely the output for this program.
+Looking at the text file provided to us, it's likely the output for this program. Use "hexdump message.txt.cz | less" to view the content of the file in hexadecimal format.
 
 ![image](https://github.com/moromerx/CTF-Challenges/assets/162036545/812de3d6-dfa7-43e2-9e11-7fc745d7cd68)
 
-The "0000050" is the address. "000c 0000 0000 0000" are the first 8 bytes (00 is one byte). "000c" is 12, this means the first character has 12 occurences. "0049" is 73, so the first position was 73 and so on.
+The "0000050" is the address. "000c 0000 0000 0000" are the first 8 bytes (00 is one byte). "000c" is 12, which means the first character has 12 occurrences. "0049" is 73, so the first position was 73, and so on.
 
 We can decode this data by writing a python script:
 
@@ -100,10 +100,10 @@ We can decode this data by writing a python script:
 
 6. for i in range(length): ... highest = max(highest, pos) - For each value from 0 to length-1, another 8 bytes are read and unpacked to get pos, the position in the bytearray that should be set to current. The current value (ranging from 0 to 255) is assigned to content[pos]. 'highest' is updated to track the highest position modified in the bytearray.
 
-7. print(content[:highest].decode()) - After the loop completes, the code prints out the contents of bytearray up to the highest index that was modified, decoding it from bytes to a string.
+7. print(content[:highest].decode()) - After the loop completes, the code prints out the contents of the bytearray up to the highest index that was modified, decoding it from bytes to a string.
 
-This will return a converstaion between two organizers and will also contain the flag.
+This will return a conversation between two organizers that includes the flag.
 
 ![image](https://github.com/moromerx/CTF-Challenges/assets/162036545/de1b17ca-7d22-4740-807b-0b16ce1242dd)
 
-Done!
+Done!🎉
