@@ -16,7 +16,7 @@ Find the main function.
 
 ![image](https://github.com/moromerx/CTF-Challenges/assets/162036545/6afc6cb3-964e-4d7f-b1bb-016d2e301d14)
 
-After understanding the fucntion a bit, I have renamed the variables:
+After understanding the function a bit, I have renamed the variables:
 
 ![image](https://github.com/moromerx/CTF-Challenges/assets/162036545/fda2d58d-0ac8-434b-b00c-b777b00e4e14)
 
