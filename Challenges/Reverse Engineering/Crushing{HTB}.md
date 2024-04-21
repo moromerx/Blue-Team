@@ -40,13 +40,13 @@ The main function:
 
 We still don't really get what the program is doing; let's check the 'add_char_to_map' function (double-click on it).
 
-`Note: I changed the name of the first two variables to array and input`
+`Note: I changed the name of the first two variables to array and input.`
 
 ![image](https://github.com/moromerx/CTF-Challenges/assets/162036545/ecc3e192-85ea-4550-a1f2-3fbd083eeac3)
 
 The add_char_to_map function:
 
-`Note: The concept of linked list is used here`
+`Note: The concept of linked list is used here.`
 
 1.  It defines a pointer puVar1 and a long integer local_10.
 
