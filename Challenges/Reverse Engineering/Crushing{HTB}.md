@@ -44,7 +44,7 @@ We still don't really get what the program is doing; let's check the 'add_char_t
 
 ![image](https://github.com/moromerx/CTF-Challenges/assets/162036545/ecc3e192-85ea-4550-a1f2-3fbd083eeac3)
 
-The add_char_to_map function is doing the following:
+The add_char_to_map function:
 
 `Note: The concept of linked list is used here`
 
