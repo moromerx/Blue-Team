@@ -64,7 +64,7 @@ The add_char_to_map function:
 
 So the 'add_char_to_map' function uses a linked list to track occurrences of characters in a dataset. It calculates the position for a character in an array, checks if a linked list already exists there, and either creates a new list or appends to the existing one. 
 
-The final function we need to understand is the 'searilize and output' function:
+The final function we need to understand is the searilize_and_output function:
 
 ![image](https://github.com/moromerx/CTF-Challenges/assets/162036545/adcc507c-763d-423a-9836-986f4cadb113)
 
