@@ -90,7 +90,7 @@ The "0000050" is the address. "000c 0000 0000 0000" are the first 8 bytes (00 is
 
 We can decode this data by writing a python script:
 
-`Source: [HTB: solve.py](https://github.com/hackthebox/cyber-apocalypse-2024/blob/main/reversing/%5BEasy%5D%20Crushing/htb/solve.py)
+`Source: [HTB: solve.py](https://github.com/hackthebox/cyber-apocalypse-2024/blob/main/reversing/%5BEasy%5D%20Crushing/htb/solve.py)`
 
 ```
 from struct import unpack
