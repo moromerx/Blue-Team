@@ -1,4 +1,4 @@
-## Crushing (Easy) - HTB
+## 🔨 Crushing (Easy) - HTB
 
 Unzip the file.
 
@@ -89,6 +89,25 @@ Looking at the text file provided to us, it's likely the output for this program
 The "0000050" is the address. "000c 0000 0000 0000" are the first 8 bytes (00 is one byte). "000c" is 12, which means the first character has 12 occurrences. "0049" is 73, so the first position was 73, and so on.
 
 We can decode this data by writing a python script:
+
+from struct import unpack
+
+content = bytearray(1024)
+
+`Source: [HTB: solve.py](https://github.com/hackthebox/cyber-apocalypse-2024/blob/main/reversing/%5BEasy%5D%20Crushing/htb/solve.py)
+```
+fp = open("message.txt.cz", "rb")
+highest = 0
+for current in range(256):
+    length_bytes = fp.read(8)
+    if len(length_bytes) != 8: break
+    length = unpack("Q", length_bytes)[0]
+    for i in range(length):
+        pos = unpack("Q", fp.read(8))[0]
+        content[pos] = current
+        highest = max(highest, pos)
+print(content[:highest].decode())
+```
 
 1. from struct import unpack - This imports the unpack function from the struct module, which is used to interpret strings as packed binary data.
 
